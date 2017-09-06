@@ -1,1 +1,2 @@
-console.log('Hello world');
+require('babel-core/register');
+require('./app.es6');
