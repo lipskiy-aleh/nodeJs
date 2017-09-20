@@ -1,5 +1,5 @@
-import {appName} from './config/server';
-import {User, Product} from './models';
+import {appName} from 'config/server';
+import {User, Product} from 'models';
 
 // HW1
 const user = new User();
