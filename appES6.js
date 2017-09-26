@@ -1,12 +1,6 @@
-import {appName} from 'config/server';
-import {User, Product} from 'models';
+// import {appName} from 'config/server';
+// import {User, Product} from 'models';
+import DirWatcher from 'modules/DirWatcher';
 
-// HW1
-const user = new User();
-const product = new Product();
-console.log(appName);
-
-// Need for eslint(no-unused-vars)
-console.log(user);
-console.log(product);
-
+const dirWatcher = new DirWatcher();
+dirWatcher.watch('./data', 100);
