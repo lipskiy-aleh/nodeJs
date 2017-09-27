@@ -1,13 +1,14 @@
 // import {appName} from 'config/server';
 // import {User, Product} from 'models';
-import DirWatcher from 'modules/DirWatcher';
-import events from 'events';
-import Importer from 'modules/Importer';
+import {DirWatcher, Importer, SingletonEventEmitter} from 'modules/';
 
-global.eventEmitter = new events.EventEmitter();
+// import events from 'events';
+// global.eventEmitter = new events.EventEmitter();
+const eventEmitter = new SingletonEventEmitter();
+
 const importer = new Importer();
 
-global.eventEmitter.on('fileChange', (filePath) => {
+eventEmitter.on('fileChange', (filePath) => {
     console.log(filePath);
     importer.importSync(filePath);
 });

@@ -1,6 +1,6 @@
 import chokidar from 'chokidar';
-// import events from 'events';
-// const eventEmitter = new events.EventEmitter();
+import SingletonEventEmitter from './SingletonEventEmitter';
+const eventEmitter = new SingletonEventEmitter();
 
 export default class DirWatcher {
     constructor() {
@@ -14,7 +14,7 @@ export default class DirWatcher {
 
         watcher.on('all', (event, changeFilePath) => {
             if(event === 'add' || event === 'change') {
-                global.eventEmitter.emit('fileChange', changeFilePath);
+                eventEmitter.emit('fileChange', changeFilePath);
             }
         });
     }
