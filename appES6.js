@@ -1,12 +1,17 @@
-import {appName} from 'config/server';
-import {User, Product} from 'models';
+// import {appName} from 'config/server';
+// import {User, Product} from 'models';
+import {DirWatcher, Importer, SingletonEventEmitter} from 'modules/';
 
-// HW1
-const user = new User();
-const product = new Product();
-console.log(appName);
+// import events from 'events';
+// global.eventEmitter = new events.EventEmitter();
+const eventEmitter = new SingletonEventEmitter();
 
-// Need for eslint(no-unused-vars)
-console.log(user);
-console.log(product);
+const importer = new Importer();
 
+eventEmitter.on('fileChange', (filePath) => {
+    console.log(filePath);
+    importer.importSync(filePath);
+});
+
+const dirWatcher = new DirWatcher();
+dirWatcher.watch('./data', 100);
