@@ -31,6 +31,9 @@
   "dependencies": {
     "app-module-path": "^2.2.0",
     "chokidar": "^1.7.0",
-    "csvjson": "^4.3.4"
+    "commander": "^2.11.0",
+    "csv2": "^0.1.1",
+    "csvjson": "^4.3.4",
+    "through2": "^2.0.3"
   }
 }
