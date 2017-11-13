@@ -4,8 +4,8 @@
   "description": "My first Node JS project",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "develop": "nodemon app.js",
+    "start": "node index.js",
+    "develop": "nodemon index.js",
     "eslint": "eslint ."
   },
   "repository": {
@@ -30,10 +30,14 @@
   },
   "dependencies": {
     "app-module-path": "^2.2.0",
+    "body-parser": "^1.18.2",
     "chokidar": "^1.7.0",
     "commander": "^2.11.0",
+    "cookie": "^0.3.1",
     "csv2": "^0.1.1",
     "csvjson": "^4.3.4",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
     "through2": "^2.0.3"
   }
 }
