@@ -1,10 +1,4 @@
-import {find} from 'lodash';
-
-const defaultListOfProducts = [
-    {id: 0, name: 'shoes'},
-    {id: 1, name: 'shoes1'},
-    {id: 2, name: 'shoes2'},
-];
+import {Product as productModel} from '../models';
 
 const productsReviews = [
     {productId: 1, reviewName: 'Aleh', review: 'bla-bla-bla1'},
@@ -17,21 +11,19 @@ const productsReviews = [
 
 class Products {
     constructor() {
-        this.products = defaultListOfProducts;
         this.reviews = productsReviews;
     }
 
     get allProducts() {
-        return this.products;
+        return productModel.findAll();
     }
 
     addProduct(newProduct) {
-        // Here should add uniq ID to new product
-        this.products.push(newProduct);
+        return productModel.create(newProduct);
     }
 
     getProductById(id) {
-        return find(this.products, (product) => product.id === id);
+        return productModel.findById(id);
     }
 
     getReviewsForProduct(id) {

@@ -29,11 +29,16 @@ router.get(endpoints.twitterCallback, passport.authenticate('twitter', {
 
 
 // API
-router.get(endpoints.users, authentication.checkAuth, usersMethods.getAllUsers);
-router.get(endpoints.products, authentication.checkAuth, productsMethods.getAllProduct);
-router.post(endpoints.products, authentication.checkAuth, productsMethods.addProduct);
-router.get(endpoints.product, authentication.checkAuth, productsMethods.getProductById);
-router.get(endpoints.productReview, authentication.checkAuth, productsMethods.getReviewsById);
+// router.get(endpoints.users, authentication.checkAuth, usersMethods.getAllUsers);
+// router.get(endpoints.products, authentication.checkAuth, productsMethods.getAllProduct);
+// router.post(endpoints.products, authentication.checkAuth, productsMethods.addProduct);
+// router.get(endpoints.product, authentication.checkAuth, productsMethods.getProductById);
+// router.get(endpoints.productReview, authentication.checkAuth, productsMethods.getReviewsById);
 
+router.get(endpoints.users, usersMethods.getAllUsers);
+router.get(endpoints.products, productsMethods.getAllProduct);
+router.post(endpoints.products, productsMethods.addProduct);
+router.get(endpoints.product, productsMethods.getProductById);
+router.get(endpoints.productReview, productsMethods.getReviewsById);
 
 export default router;

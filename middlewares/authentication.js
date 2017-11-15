@@ -18,15 +18,13 @@ class Authentication {
             usernameField: usernameFieldName,
             passwordField: passwordFieldName
         }, (username, password, done) => {
-            const user = userMiddleware.findUserByLoginAndPassword(username, password);
-
-            if (!user) {
-                return done(null, false, { message: 'Incorrect username.' });
-            }
-            // if (!user.validPassword(password)) {
-            //     return done(null, false, { message: 'Incorrect password.' });
-            // }
-            return done(null, user);
+            userMiddleware.findUserByLoginAndPassword(username, password)
+                .then(user => {
+                    if(!user) {
+                        throw 500;
+                    }
+                    done(null, user);
+                }).catch(() => done(null, false, { message: 'Incorrect username.' }));
         }
         ));
 
@@ -46,20 +44,23 @@ class Authentication {
             consumerSecret: twitter.secret,
             callbackURL: twitterCallbackUrl
         }, (token, tokenSecret, profile, done) => {
-            const user = userMiddleware.findOrCreateByTwitterId(profile);
-            return done(null, user);
+            userMiddleware.findOrCreateByTwitterId(profile)
+                .then(user => {console.log(user[0].dataValues); done(null, user[0].dataValues);});
         }));
 
         passport.serializeUser((user, done) => {
+            console.log(user.id);
             done(null, user.id);
         });
 
         passport.deserializeUser((id, done) => {
-            const currentUser = userMiddleware.findUserById(id);
-            if (!currentUser) {
-                return done(null, false);
-            }
-            return done(null, currentUser);
+            userMiddleware.findUserById(id)
+                .then(currentUser => {
+                    if(!currentUser) {
+                        throw 500;
+                    }
+                    done(null, currentUser);
+                }).catch(() => done(null, false));
         });
     }
 
