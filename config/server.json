@@ -2,6 +2,7 @@
     "appName": "Node MP HW App",
     "jwtSecretKey": "la-la-la",
     "sessionSecret": "ilovescotchscotchyscotchscotch",
+    "DEFAULT_PASSWORD": "user",
     "google": {
         "key": "870948884638-2pstn40s4j5brm6r88tgfg01jsp46vb2.apps.googleusercontent.com",
         "secret": "ZqziUAoPPisvQUo_LppruXZH"
@@ -9,5 +10,20 @@
     "twitter": {
         "key": "fJFR2jKOIz72OZc75onKrr0p3",
         "secret": "gtJuC0AdFKND1lArs3sVFYde9hOrHwIOHvcZ7hjVYnF24ejVE9"
+    },
+    "DBconfig": {
+        "dbName": "nodeApp",
+        "username": "postgres",
+        "password": "admin",
+        "sequelizeOptions": {
+            "host": "localhost",
+            "dialect": "postgres",
+            "pool": {
+                "max": 5,
+                "min": 0,
+                "acquire": 30000,
+                "idle": 10000
+            }
+        }
     }
 }

@@ -35,5 +35,4 @@ router.post(endpoints.products, authentication.checkAuth, productsMethods.addPro
 router.get(endpoints.product, authentication.checkAuth, productsMethods.getProductById);
 router.get(endpoints.productReview, authentication.checkAuth, productsMethods.getReviewsById);
 
-
 export default router;
