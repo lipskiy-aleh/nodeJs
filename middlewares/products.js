@@ -15,15 +15,28 @@ class Products {
     }
 
     get allProducts() {
-        return productModel.findAll();
+        return productModel.find({});
     }
 
     addProduct(newProduct) {
-        return productModel.create(newProduct);
+        return new Promise((resolve, reject) => {
+            new productModel(newProduct).save(err => {
+                if(err) {
+                    reject('product not saved ' + err);
+                } else {
+                    console.log('product saved');
+                    resolve(newProduct);
+                }
+            });
+        });
     }
 
     getProductById(id) {
-        return productModel.findById(id);
+        return productModel.find({ id: id });
+    }
+
+    deleteProductById(id) {
+        return productModel.remove({ id: id});
     }
 
     getReviewsForProduct(id) {

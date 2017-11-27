@@ -41,6 +41,8 @@
     "express-session": "^1.15.6",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.5",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",

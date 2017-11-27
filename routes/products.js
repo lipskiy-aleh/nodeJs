@@ -21,9 +21,22 @@ class Products {
             productsMiddleware.getProductById(id)
                 .then(product => {
                     if(!product) {
-                        throw 404;
+                        throw new Error(404);
                     }
                     res.json(product);
+                })
+                .catch(() => res.status(404).send(productNotFoundText));
+        } else {
+            res.status(400).send(error400Text);
+        }
+    }
+
+    deleteProductById(req, res) {
+        const id = Number(req.params.id);
+        if(Number.isInteger(id)) {
+            productsMiddleware.deleteProductById(id)
+                .then(() => {
+                    res.send('Remove success');
                 })
                 .catch(() => res.status(404).send(productNotFoundText));
         } else {
