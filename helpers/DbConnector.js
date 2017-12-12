@@ -1,20 +1,11 @@
-import Sequelize from 'sequelize';
+import mongoose from 'mongoose';
 import { DBconfig } from '../config/server';
 
-const sequelize = new Sequelize(
-    DBconfig.dbName,
-    DBconfig.username,
-    DBconfig.password,
-    DBconfig.sequelizeOptions
-);
+mongoose.connect(DBconfig.mongoose.url);
 
-// Check connection section
-sequelize.authenticate()
-    .then(() => {
-        console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err);
-    });
+mongoose.connection.on('error', err => {
+    log.error(err);
+});
 
-export default sequelize;
+
+export default mongoose;

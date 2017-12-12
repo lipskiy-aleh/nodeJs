@@ -1,37 +1,27 @@
-import Sequelize from 'sequelize';
 import {dbConnector} from '../helpers';
-import productsData from '../data/products.json';
+import {Schema} from 'mongoose';
+import initProducts from '../data/products.json';
 
-const tableName = 'products';
+const modelName = 'Product';
 
-const Product = dbConnector.define(tableName, {
-    id: {
-        type: Sequelize.BIGINT,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    name: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    brand: {
-        type: Sequelize.STRING
-    },
+const ProductSchema = new Schema({
+    id: {type: Number},
+    name: {type: String},
+    brand: {type: String},
     price: {
-        type: Sequelize.FLOAT,
-        allowNull: false
+        type: Number,
+        validate: {
+            validator: v => (v >= 1),
+            message: `{VALUE} is not a valid price value`
+        },
     },
-    options: {
-        type: Sequelize.JSON
-    },
+    options: {type: JSON}
 });
+const Product = dbConnector.model(modelName, ProductSchema);
 
-// Point 7 of HW. (import product data from model file)
-Product.sync({force: true}).then(() => {
-    productsData.map(product => {
-        Product.create(product);
-    });
-});
+function initData() {
+    initProducts.forEach( el => new Product(el).save());
+}
+initData();
 
 export default Product;

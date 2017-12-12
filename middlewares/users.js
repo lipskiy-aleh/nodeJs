@@ -7,15 +7,15 @@ class Users {
     }
 
     get allUsers() {
-        return userModel.findAll();
+        return userModel.find({});
     }
 
     findUserByLoginAndPassword(login, password) {
-        return Project.findOne({ where: {login: login, password: password} });
+        return userModel.find({login: login, password: password});
     }
 
     findUserById(id) {
-        return userModel.findById(id);
+        return userModel.find({ id: id });
     }
 
     findOrCreateByTwitterId(profile) {
@@ -42,6 +42,9 @@ class Users {
     //     return newUser;
     // }
 
+    deleteUserById(id) {
+        return userModel.remove({ id: id});
+    }
 }
 
 const users = new Users();

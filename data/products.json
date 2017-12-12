@@ -1,11 +1,11 @@
 [
-    {"name": "Bla", "price": 1100.1, "brand": "adi"},
-    {"name": "Bla1", "price": 1100.1, "brand": "adi"},
-    {"name": "Bla2", "price": 1100.1, "brand": "adi"},
-    {"name": "Bla3", "price": 1100.1, "brand": "adi"},
-    {"name": "Bla4", "price": 1100.1, "brand": "adi"},
-    {"name": "Bla5", "price": 1100.1, "brand": "adi"},
-    {"name": "Bla6", "price": 1100.1, "brand": "adi"},
-    {"name": "Bla7", "price": 1100.1, "brand": "adi"},
-    {"name": "Bla8", "price": 1100.1, "brand": "adi"}
+    {"id": "1", "name": "Bla", "price": 1100.1, "brand": "adi"},
+    {"id": "2", "name": "Bla1", "price": 1100.1, "brand": "adi"},
+    {"id": "3", "name": "Bla2", "price": 1100.1, "brand": "adi"},
+    {"id": "4", "name": "Bla3", "price": 1100.1, "brand": "adi"},
+    {"id": "5", "name": "Bla4", "price": 1100.1, "brand": "adi"},
+    {"id": "6", "name": "Bla5", "price": 1100.1, "brand": "adi"},
+    {"id": "7", "name": "Bla6", "price": 1100.1, "brand": "adi"},
+    {"id": "8", "name": "Bla7", "price": 1100.1, "brand": "adi"},
+    {"id": "9", "name": "Bla8", "price": 1100.1, "brand": "adi"}
 ]
